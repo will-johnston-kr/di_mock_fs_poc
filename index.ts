@@ -1,7 +1,7 @@
 import { readFileSync } from "fs";
 import { doesFileExist, checkIsDir } from "./utils";
 
-// innjectino of `readFileSync` dependency
+// injection of `readFileSync` dependency
 // @ts-expect-error
 doesFileExist("HelloWorld.txt", readFileSync);
 
