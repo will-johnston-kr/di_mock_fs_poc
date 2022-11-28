@@ -1,16 +1,6 @@
-import { hasDependency, doesFileExist, checkIsDir } from "./utils";
+import { doesFileExist, checkIsDir } from "./utils";
 
 import mock from "mock-fs";
-
-describe("hasDependency unit tests", () => {
-  it("Should return the target string", () => {
-    function returnsTarget(targetString: string) {
-      return targetString;
-    }
-
-    expect(hasDependency("Foo", returnsTarget)).toBe("Foo");
-  });
-});
 
 describe("doesFileExist unit tests", () => {
   it("Should return true when the file exists", () => {
@@ -65,7 +55,9 @@ describe("doesFileExist unit tests", () => {
       };
 
       mock({
+        // mocks a directory called "foo"
         foo: mock.directory({
+          // configuration object allows to set various properties in the `Stats` object
           atime: new Date("10/24/1986"),
           ctime: new Date("10/24/1986"),
           mtime: new Date("10/24/1986"),

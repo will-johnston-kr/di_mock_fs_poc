@@ -1,11 +1,8 @@
 import { readFileSync, stat, Stats } from "fs";
-export function hasDependency(
-  target: string,
-  dependency: (target: string) => string
-): string {
-  return dependency(target);
-}
 
+/*
+	`doesFileExist` function refactored to accept `readFile()` as a parameter, allowing for injection of the dependency in tests 
+*/
 export function doesFileExist(
   targetFilePath: string,
   readFile: (
@@ -24,6 +21,9 @@ export function doesFileExist(
   }
 }
 
+/*
+	Copied implemention of `checkIsDir` from color migration tool. `fs.stat` is mocked in tests using `mock-fs` 
+*/
 export const checkIsDir = async (path: string): Promise<Stats> =>
   new Promise((resolve, reject) => {
     stat(path, (err, stats) => {
